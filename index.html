@@ -30,13 +30,28 @@
     renderer="colorManagement: true, physicallyCorrectLights"
     device-orientation-permission-ui="enabled: true">
 
-    <!-- VIDEO sobre la imagen reconocida -->
-scene 
+    <!-- Plano con video -->
+    <a-plane 
+      mindar-image-target="targetIndex: 0"
+      width="1.5" 
+      height="0.85" 
+      position="0 0 0" 
+      rotation="-90 0 0"
+      material="shader: flat; src: #video">
+    </a-plane>
+
+    <!-- Cubo de prueba -->
+    <a-box 
+      mindar-image-target="targetIndex: 0"
+      position="0 0.5 0"
+      depth="0.2" height="0.2" width="0.2"
+      color="red">
+    </a-box>
 
     <a-entity camera></a-entity>
   </a-scene>
 
-  <!-- Elemento <video> oculto, usado como textura -->
+  <!-- Video oculto -->
   <video 
     id="video" 
     src="video.mp4" 
@@ -50,7 +65,7 @@ scene
   <script>
     const video = document.getElementById("video");
     document.body.addEventListener("click", () => {
-      video.play(); // iOS: requiere interacción
+      video.play();
     });
   </script>
 </body>
